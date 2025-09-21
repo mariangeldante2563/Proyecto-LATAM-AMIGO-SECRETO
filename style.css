@@ -382,7 +382,7 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
-/* ACTION SECTION - BOTÓN 3D */
+/* ACTION SECTION - BOTï¿½N 3D */
 .action-section {
   display: flex;
   justify-content: center;
@@ -660,9 +660,9 @@ footer {
   transition: var(--transition-medium);
 }
 
-.social-link:nth-child(1):hover i { color: #dc2743; }
-.social-link:nth-child(2):hover i { color: #25D366; }
-.social-link:nth-child(3):hover i { color: #1da1f2; }
+.social-link:nth-child(1):hover i { color: #2757dc; }
+.social-link:nth-child(2):hover i { color: #ffffff; }
+.social-link:nth-child(3):hover i { color: #f23d1d; }
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {

@@ -1,8 +1,7 @@
-// ===============================================
-// 🎮 AMIGO SECRETO - JAVASCRIPT OPTIMIZADO
-// ===============================================
 
-// Configuración global
+// AMIGO SECRETO - JAVASCRIPT 
+// Configuración general
+// ===============================================
 const CONFIG = {
     MIN_FRIENDS: 3,
     MAX_FRIENDS: 50,
@@ -24,7 +23,7 @@ let appState = {
 };
 
 // ===============================================
-// 🌟 CLASE SISTEMA DE PARTÍCULAS OPTIMIZADA
+// CLASE SISTEMA DE PARTÍCULAS EFECTO DE FONDO
 // ===============================================
 
 class ParticleSystem {
@@ -39,12 +38,12 @@ class ParticleSystem {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Posición aleatoria
+        // En esta seccion se establece la posición aleatoria
         particle.style.left = Math.random() * 100 + '%';
         particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
         particle.style.animationDelay = Math.random() * 2 + 's';
-        
-        // Variaciones de tamaño y color
+
+        // Variaciones de tamaño y color en el código
         const size = Math.random() * 3 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
@@ -61,7 +60,7 @@ class ParticleSystem {
         this.isRunning = true;
         this.container.innerHTML = '';
         
-        // Crear partículas iniciales
+        // Crear partículas iniciales en la pantalla
         for (let i = 0; i < CONFIG.PARTICLE_COUNT; i++) {
             const particle = this.createParticle();
             this.particles.push(particle);
@@ -74,14 +73,14 @@ class ParticleSystem {
     animate() {
         if (!this.isRunning) return;
         
-        // Añadir nueva partícula ocasionalmente
+        // Añadir nueva partícula ocasionalmente, es decir que no sea constante
         if (Math.random() < 0.1 && this.particles.length < CONFIG.PARTICLE_COUNT * 1.5) {
             const particle = this.createParticle();
             this.particles.push(particle);
             this.container.appendChild(particle);
         }
         
-        // Limpiar partículas viejas
+        // Limpiar partículas viejas para que sean transparentes
         this.particles = this.particles.filter(particle => {
             if (particle.offsetTop > window.innerHeight + 100) {
                 particle.remove();
@@ -105,7 +104,7 @@ class ParticleSystem {
 }
 
 // ===============================================
-// ⭐ CLASE CAMPO DE ESTRELLAS OPTIMIZADA
+// CLASE CAMPO DE ESTRELLAS OPTIMIZADA
 // ===============================================
 
 class StarField {
@@ -119,8 +118,8 @@ class StarField {
     createStar() {
         const star = document.createElement('div');
         star.className = 'star';
-        
-        // Tipos de estrellas
+
+        // todos los tipos de estrellas
         const types = ['small', 'medium', 'large'];
         const weights = [0.6, 0.3, 0.1]; // Probabilidades
         const type = this.weightedRandom(types, weights);
@@ -198,7 +197,7 @@ class StarField {
 }
 
 // ===============================================
-// 🔔 SISTEMA DE NOTIFICACIONES MEJORADO
+// SISTEMA DE NOTIFICACIONES MEJORADO
 // ===============================================
 
 class ToastManager {
@@ -320,7 +319,7 @@ class ToastManager {
 }
 
 // ===============================================
-// 📱 SISTEMA DE ALERTAS PERSONALIZADAS
+// SISTEMA DE ALERTAS PERSONALIZADAS
 // ===============================================
 
 class AlertManager {
@@ -425,7 +424,7 @@ class AlertManager {
 }
 
 // ===============================================
-// 🎯 FUNCIONES PRINCIPALES DE LA APLICACIÓN
+// FUNCIONES PRINCIPALES DE LA APLICACIÓN
 // ===============================================
 
 // Instancias globales
@@ -664,7 +663,7 @@ function showLoadingState() {
         <div class="loading-card">
             <div class="loading-content">
                 <div class="loading-spinner"></div>
-                <h3>🎲 Realizando sorteo...</h3>
+                <h3> Realizando sorteo...</h3>
                 <p>Mezclando los nombres y asignando amigos secretos</p>
                 <div class="tips">
                     <p><i class="fas fa-lightbulb"></i> Cada persona recibirá el nombre de su amigo secreto</p>
@@ -847,7 +846,7 @@ function updateSorteoButton() {
 }
 
 // ===============================================
-// 💾 PERSISTENCIA DE DATOS
+// PERSISTENCIA DE DATOS
 // ===============================================
 
 function saveData() {
@@ -883,7 +882,7 @@ function loadSavedData() {
 }
 
 // ===============================================
-// 🛠️ UTILIDADES
+// UTILIDADES
 // ===============================================
 
 function escapeHtml(text) {
@@ -905,7 +904,7 @@ function debounce(func, wait) {
 }
 
 // ===============================================
-// 🚀 INICIALIZACIÓN
+// INICIALIZACIÓN
 // ===============================================
 
 // Esperar a que el DOM esté listo
