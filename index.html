@@ -1,95 +1,124 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Secreto LATAM</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Amigo Secreto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Aplicación web para sorteo de amigo secreto">
+    <meta name="keywords" content="amigo secreto, sorteo, latam, juego">
+    <meta name="author" content="Mariangel D'Antonio">
 </head>
-
 <body>
-    <div id="particles-container" aria-hidden="true"></div>
-    <div id="stars-container" aria-hidden="true"></div>
-    <div class="light-beam" aria-hidden="true"></div>
-    
-    <main class="main-content">
-        <header class="header-banner">
+    <div class="container">
+        <header>
             <h1 class="neon-title">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                Amigo Secreto
+                <i class="fas fa-gift"></i>
+                Amigo Secreto LATAM
+                <i class="fas fa-gift"></i>
             </h1>
         </header>
-        
-        <section class="input-section">
-            <div class="content">
-                <div class="marquee" aria-hidden="true">
-                    <div class="marquee_clear">
-                        <p class="marquee_text">Digite el nombre de sus amigos</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="input-wrapper">
-                <label for="amigo" class="sr-only">Nombre del amigo</label>
-                <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre" autocomplete="off">
-                <button type="button" class="button-add" onclick="agregarAmigo()">Añadir</button>
-            </div>
-           
-            <ul id="listaAmigos" class="name-list" role="list" aria-label="Lista de amigos agregados"></ul>
-            <ul id="resultado" class="result-list" role="region" aria-live="polite" aria-label="Resultado del sorteo"></ul>
 
-            <div class="button-container">
-                <div class="container" onclick="sortearAmigo()" role="button" tabindex="0" aria-label="Sortear amigo secreto" onkeydown="if(event.key==='Enter'||event.key===' ') sortearAmigo()">
-                    <div class="box-card">
-                        <div class="face front">Sortear Amigo</div>
-                        <div class="face back">¡Dale Click!</div>
-                        <div class="face right">Descubre</div>
-                        <div class="face left">Tu Amigo</div>
-                        <div class="face top">Secreto</div>
-                        <div class="face bottom">Aquí</div>
-                    </div>
+        <section class="marquee-section">
+            <div class="marquee-container">
+                <div class="marquee">
+                    <span>Digite el nombre de sus amigos</span>
+                    <span>•</span>
+                    <span>Presione el botón para sortear</span>
+                    <span>•</span>
+                    <span>¡Disfruta el juego!</span>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="social-footer" role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-text">
-                <h3>Amigo Secreto Proyecto</h3>
-                <p>Síguenos en nuestras redes sociales.</p>
+        <main>
+            <section class="input-section">
+                <div class="input-wrapper">
+                    <input
+                        type="text"
+                        class="input-name"
+                        placeholder="Escribe un nombre"
+                        maxlength="50"
+                        aria-label="Nombre del amigo"
+                    >
+                    <button
+                        class="button-add"
+                        aria-label="Agregar amigo"
+                    >
+                        <i class="fas fa-plus"></i>
+                        Agregar
+                    </button>
+                </div>
+                <div class="contador-amigos"></div>
+            </section>
+
+            <section class="list-section">
+                <ul class="name-list" role="list" aria-label="Lista de amigos agregados"></ul>
+            </section>
+
+            <section class="action-section">
+                <div class="button-container">
+                    <div
+                        class="sorteo-button"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Sortear amigo secreto"
+                    >
+                        <div class="box-card">
+                            <div class="face front">
+                                <i class="fas fa-dice"></i>
+                                <span>Sortear</span>
+                            </div>
+                            <div class="face back">
+                                <i class="fas fa-gift"></i>
+                                <span>¡Suerte!</span>
+                            </div>
+                            <div class="face right">
+                                <i class="fas fa-users"></i>
+                                <span>Amigos</span>
+                            </div>
+                            <div class="face left">
+                                <i class="fas fa-magic"></i>
+                                <span>Secreto</span>
+                            </div>
+                            <div class="face top">
+                                <i class="fas fa-star"></i>
+                                <span>¡Vamos!</span>
+                            </div>
+                            <div class="face bottom">
+                                <i class="fas fa-heart"></i>
+                                <span>Diversión</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="result-container" class="result-section" aria-live="polite" hidden></section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Amigo Secreto LATAM. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
             </div>
-            <nav class="social-icons" aria-label="Redes sociales">
-                <ul>
-                    <li>
-                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">
-                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
-                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Twitter">
-                            <i class="fa-brands fa-twitter" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year">2025</span> Amigo Secreto — Todos los derechos reservados</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
+    <div id="particles-container" class="particles"></div>
+    <div id="stars-container" class="stars"></div>
 
     <script src="app.js"></script>
 </body>
