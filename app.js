@@ -1,7 +1,7 @@
 
 // AMIGO SECRETO - JAVASCRIPT 
 // Configuración general
-// ===============================================
+
 const CONFIG = {
     MIN_FRIENDS: 3,
     MAX_FRIENDS: 50,
@@ -11,7 +11,7 @@ const CONFIG = {
     TOAST_DURATION: 4000
 };
 
-// Estado de la aplicación
+// Estado de la aplicación. vaciar lista de amigos  OJO
 let appState = {
     friends: [],
     currentResults: {},
@@ -22,9 +22,9 @@ let appState = {
     countdownTimer: null
 };
 
-// ===============================================
+
 // CLASE SISTEMA DE PARTÍCULAS EFECTO DE FONDO
-// ===============================================
+
 
 class ParticleSystem {
     constructor(container) {
@@ -39,11 +39,13 @@ class ParticleSystem {
         particle.className = 'particle';
         
         // En esta seccion se establece la posición aleatoria
+
         particle.style.left = Math.random() * 100 + '%';
         particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
         particle.style.animationDelay = Math.random() * 2 + 's';
 
         // Variaciones de tamaño y color en el código
+
         const size = Math.random() * 3 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
@@ -61,6 +63,7 @@ class ParticleSystem {
         this.container.innerHTML = '';
         
         // Crear partículas iniciales en la pantalla
+
         for (let i = 0; i < CONFIG.PARTICLE_COUNT; i++) {
             const particle = this.createParticle();
             this.particles.push(particle);
@@ -74,13 +77,14 @@ class ParticleSystem {
         if (!this.isRunning) return;
         
         // Añadir nueva partícula ocasionalmente, es decir que no sea constante
+
         if (Math.random() < 0.1 && this.particles.length < CONFIG.PARTICLE_COUNT * 1.5) {
             const particle = this.createParticle();
             this.particles.push(particle);
             this.container.appendChild(particle);
         }
         
-        // Limpiar partículas viejas para que sean transparentes
+        // Limpiar partículas viejas para que sean transparentes, efecto adicional
         this.particles = this.particles.filter(particle => {
             if (particle.offsetTop > window.innerHeight + 100) {
                 particle.remove();
@@ -103,9 +107,8 @@ class ParticleSystem {
     }
 }
 
-// ===============================================
-// CLASE CAMPO DE ESTRELLAS OPTIMIZADA
-// ===============================================
+// CLASE CAMPO DE ESTRELLAS 
+
 
 class StarField {
     constructor(container) {
@@ -119,9 +122,9 @@ class StarField {
         const star = document.createElement('div');
         star.className = 'star';
 
-        // todos los tipos de estrellas
+        // todos los tipos de estrellas aplicadas 
         const types = ['small', 'medium', 'large'];
-        const weights = [0.6, 0.3, 0.1]; // Probabilidades
+        const weights = [0.6, 0.3, 0.1]; // Probabilidades aplicadas
         const type = this.weightedRandom(types, weights);
         star.classList.add(type);
         
@@ -196,9 +199,9 @@ class StarField {
     }
 }
 
-// ===============================================
-// SISTEMA DE NOTIFICACIONES MEJORADO
-// ===============================================
+
+// SISTEMA DE NOTIFICACIONES 
+
 
 class ToastManager {
     constructor() {
@@ -231,13 +234,12 @@ class ToastManager {
         this.container.appendChild(toast);
         this.toasts.push(toast);
 
-        // Animación de entrada
+      
         requestAnimationFrame(() => {
             toast.style.transform = 'translateX(0)';
             toast.style.opacity = '1';
         });
 
-        // Auto-eliminar
         setTimeout(() => {
             this.remove(toast);
         }, duration);
@@ -260,7 +262,7 @@ class ToastManager {
             cursor: pointer;
         `;
 
-        // Colores por tipo
+        
         const colors = {
             success: '#4caf50',
             error: '#ff4444',
@@ -269,7 +271,7 @@ class ToastManager {
         };
         toast.style.borderColor = colors[type] || colors.info;
 
-        // Iconos por tipo
+    
         const icons = {
             success: '✅',
             error: '❌',
@@ -285,7 +287,7 @@ class ToastManager {
             </div>
         `;
 
-        // Event listeners
+        // Event listeners cambio de contenido en la pagina
         const closeBtn = toast.querySelector('button');
         closeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -318,9 +320,9 @@ class ToastManager {
     }
 }
 
-// ===============================================
+
 // SISTEMA DE ALERTAS PERSONALIZADAS
-// ===============================================
+
 
 class AlertManager {
     static show(title, message, type = 'alert') {
@@ -373,7 +375,7 @@ class AlertManager {
                 </div>
             `;
 
-            // Estilos para botones
+            // seccion de estilos para botones
             modal.querySelectorAll('.alert-btn').forEach(btn => {
                 btn.style.cssText += `
                     border: none;
@@ -393,7 +395,7 @@ class AlertManager {
             overlay.appendChild(modal);
             document.body.appendChild(overlay);
 
-            // Event listeners
+            // otros Event listeners
             if (type === 'confirm') {
                 modal.querySelector('.confirm-btn').addEventListener('click', () => {
                     document.body.removeChild(overlay);
@@ -423,18 +425,15 @@ class AlertManager {
     }
 }
 
-// ===============================================
 // FUNCIONES PRINCIPALES DE LA APLICACIÓN
-// ===============================================
 
-// Instancias globales
 let toastManager;
 
 function initializeApp() {
-    // Inicializar managers
+    
     toastManager = new ToastManager();
     
-    // Inicializar efectos de fondo
+  
     const starsContainer = document.getElementById('stars-container');
     const particlesContainer = document.getElementById('particles-container');
     
@@ -448,7 +447,7 @@ function initializeApp() {
         appState.particleSystem.start();
     }
     
-    // Event listeners
+    // otro Event listeners
     setupEventListeners();
     
     // Cargar datos guardados
@@ -462,7 +461,7 @@ function initializeApp() {
 }
 
 function setupEventListeners() {
-    // Botón agregar amigo
+    // Botón agregar amigo. ojo 
     const addButton = document.querySelector('.button-add');
     const nameInput = document.querySelector('.input-name');
     
@@ -478,12 +477,12 @@ function setupEventListeners() {
         });
         
         nameInput.addEventListener('input', (e) => {
-            // Limpiar caracteres no válidos
+            // Limpiar caracteres no válidos ojo 
             e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, '');
         });
     }
     
-    // Botón sortear
+    // Aqui Botón sortear
     const sorteoButton = document.querySelector('.sorteo-button');
     if (sorteoButton) {
         sorteoButton.addEventListener('click', handleDrawFriends);
@@ -495,12 +494,13 @@ function setupEventListeners() {
         CONFIG.STAR_COUNT = 75;
     }
 }
-
+/*flujo principal de la logica, control del flujo principal
+validar el input, que no este duplicado*/
 function handleAddFriend() {
     const nameInput = document.querySelector('.input-name');
     const name = nameInput.value.trim();
     
-    // Validaciones
+
     if (!name) {
         toastManager.show('Por favor, ingresa un nombre', 'warning');
         nameInput.focus();
@@ -519,20 +519,20 @@ function handleAddFriend() {
         return;
     }
     
-    // Verificar duplicados (case insensitive)
+    // Aqui aplicaremos la Verificacion de duplicados (case insensitive)
     if (appState.friends.some(friend => friend.toLowerCase() === name.toLowerCase())) {
         toastManager.show('Este nombre ya existe en la lista', 'warning');
         nameInput.focus();
         return;
     }
     
-    // Verificar límite máximo
+    // vamos a verificar el límite máximo
     if (appState.friends.length >= CONFIG.MAX_FRIENDS) {
         toastManager.show(`Máximo ${CONFIG.MAX_FRIENDS} amigos permitidos`, 'error');
         return;
     }
     
-    // Agregar amigo
+    // Agregar amigo ok
     appState.friends.push(name);
     nameInput.value = '';
     nameInput.focus();
@@ -607,14 +607,15 @@ async function handleDrawFriends() {
     }
 }
 
+/*logica crear una lista de amigos, uso de bicle, lista aleatoria*/
 function performDraw() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            // Algoritmo de sorteo Fisher-Yates optimizado
+            // Algoritmo de sorteo Fisher-Yates (muy buena referencia del libro de algoritmos)
             const friends = [...appState.friends];
             const results = {};
             
-            // Crear pares asegurando que nadie se saque a sí mismo
+            // Crear pares asegurando que nadie se saque a sí mismo, es como una medida de seguridad
             let attempts = 0;
             const maxAttempts = 100;
             
@@ -791,6 +792,7 @@ function updateUI() {
     updateSorteoButton();
 }
 
+/*leer el appState.friends*/ 
 function updateFriendsList() {
     const nameList = document.querySelector('.name-list');
     if (!nameList) return;
@@ -813,6 +815,8 @@ function updateFriendsList() {
     });
 }
 
+/* mostrar la lista de amigos o cuantos hay para sortear
+ */
 function updateCounter() {
     const contador = document.querySelector('.contador-amigos');
     if (!contador) return;
@@ -834,6 +838,7 @@ function updateCounter() {
     }
 }
 
+/*habilitar el boton si la lsiata de amigos esta completa */
 function updateSorteoButton() {
     const container = document.querySelector('.sorteo-button');
     if (!container) return;
@@ -845,9 +850,9 @@ function updateSorteoButton() {
     container.style.pointerEvents = canDraw ? 'auto' : 'none';
 }
 
-// ===============================================
-// PERSISTENCIA DE DATOS
-// ===============================================
+
+// PERSISTENCIA DE DATOS, CONVERTIR EL OBJETO APPSTATE
+
 
 function saveData() {
     try {
@@ -881,9 +886,9 @@ function loadSavedData() {
     }
 }
 
-// ===============================================
+
 // UTILIDADES
-// ===============================================
+
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -903,9 +908,8 @@ function debounce(func, wait) {
     };
 }
 
-// ===============================================
 // INICIALIZACIÓN
-// ===============================================
+
 
 // Esperar a que el DOM esté listo
 if (document.readyState === 'loading') {
